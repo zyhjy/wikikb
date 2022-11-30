@@ -1,5 +1,6 @@
 package com.zyh.wikikb.config;
 
+import org.mybatis.spring.annotation.MapperScan;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.boot.SpringApplication;
@@ -9,6 +10,7 @@ import org.springframework.core.env.Environment;
 
 @ComponentScan("com.zyh")
 @SpringBootApplication
+@MapperScan("com.zyh.wikikb.mapper")
 public class WikikbApplication {
 
     private static final Logger LOG = LoggerFactory.getLogger(WikikbApplication.class);

@@ -2,9 +2,8 @@ package com.zyh.wikikb.mapper;
 
 import com.zyh.wikikb.domain.Demo;
 import com.zyh.wikikb.domain.DemoExample;
-import org.apache.ibatis.annotations.Param;
-
 import java.util.List;
+import org.apache.ibatis.annotations.Param;
 
 public interface DemoMapper {
     long countByExample(DemoExample example);

@@ -1,7 +1,8 @@
 package com.zyh.wikikb.controller;
 
-import com.zyh.wikikb.domain.Ebook;
+import com.zyh.wikikb.req.EbookReq;
 import com.zyh.wikikb.resp.CommonResp;
+import com.zyh.wikikb.resp.EbookResp;
 import com.zyh.wikikb.service.EbookService;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RestController;
@@ -22,10 +23,10 @@ public class EbookController {
     @Resource
     private EbookService ebookService;
 
-    @GetMapping("/ebook/list")
-    public CommonResp list(){
-        CommonResp<List<Ebook>> resp = new CommonResp<>();
-        List<Ebook> list = ebookService.list();
+    @GetMapping("/list")
+    public CommonResp list(EbookReq ebookReq){
+        CommonResp<List<EbookResp>> resp = new CommonResp<>();
+        List<EbookResp> list = ebookService.list(ebookReq);
         resp.setContent(list);
         return resp;
     }

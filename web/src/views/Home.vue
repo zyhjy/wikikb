@@ -54,17 +54,39 @@
                     </a-sub-menu>
                 </a-menu>
             </a-layout-sider>
-            <a-layout-content
-                        :style="{ background: '#fff', padding: '24px', margin: 0, minHeight: '280px' }"
-                />
+        <a-layout-content
+                :style="{ margin: '24px 16px', padding: '24px', background: '#fff', minHeight: '280px' }"
+        >
+            <pre>{{ebooks}}}</pre>
+            <pre>{{ebooks}}</pre>
+        </a-layout-content>
         </a-layout>
 </template>
 
 <script lang="ts">
-import { defineComponent } from 'vue';
+import { defineComponent,onMounted,ref ,reactive,toRef} from 'vue';
+import axios from "axios";
 
 export default defineComponent({
   name: 'Home',
+  setup(){
+      console.log("setup");
+      const ebooks = ref();
+      const ebooks1 = reactive({books : []});
+      onMounted(()=>{
+          console.log("onmouted");
+          axios.get("http://localhost:8880/ebook/list?name=Spring").then((response) =>{
+              const data = response.data;
+              ebooks.value = data.content;
+              ebooks1.books =data.content;
+              console.log(response);
+          });
+      })
 
+      return{
+          ebooks,
+          ebooks2 : toRef(ebooks1,"books")
+      }
+  }
 });
 </script>
